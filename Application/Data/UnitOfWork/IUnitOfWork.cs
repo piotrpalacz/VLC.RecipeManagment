@@ -8,6 +8,7 @@ namespace VLC.RecipeManagment.Application.Data.UnitOfWork
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Recipe> RecipesRepo { get; }
+        Task<IEnumerable<Recipe>> Search(string label);
         Task SaveChangesAsync();
     }
 }

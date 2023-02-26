@@ -50,6 +50,26 @@ namespace VLC.RecipeManagment.Application.API.Controllers
             return Ok(id);
         }
 
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Recipe>>> Search(string label)
+        {
+            try
+            {
+                var result = await _uow.Search(label);
+
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
+            }
+        }
+
 
 
 

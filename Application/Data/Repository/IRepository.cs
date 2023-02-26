@@ -8,6 +8,7 @@ namespace VLC.RecipeManagment.Application.Data.Repository
         Task InsertRecordAsync(T entity);
         Task DeleteRecordAsync(int entity);
         Task UpdateRecordAsync(T entity);
+        
     }
 }
 

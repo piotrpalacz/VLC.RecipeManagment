@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using VLC.RecipeManagment.Application.Data.Repository;
 using VLC.RecipeManagment.Application.Models.Recipes;
 using VLC.RecipeManagment.Infrastructure;
@@ -18,6 +19,20 @@ namespace VLC.RecipeManagment.Application.Data.UnitOfWork
             _context = context;
             RecipesRepo = recipesRepo;
         }
+
+        //Search Recipe
+        public async Task<IEnumerable<Recipe>> Search(string label)
+        {
+            IQueryable<Recipe> query = _context.Recipes;
+
+            if (!string.IsNullOrEmpty(label))
+            {
+                query = query.Where(e => e.Label.Contains(label));
+            }
+
+            return query.ToList();
+        }
+
 
         public async Task SaveChangesAsync()
         {
