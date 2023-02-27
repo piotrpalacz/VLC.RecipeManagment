@@ -1,15 +1,13 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RecipeManager.Application.Models.Recipes;
 
-namespace RecipeManager.Infrastructure
+namespace RecipeManager.Infrastructure;
+
+public class ApiDbContext : DbContext
 {
-    public class ApiDbContext : DbContext
+    public ApiDbContext(DbContextOptions opts) : base(opts)
     {
-        public ApiDbContext(DbContextOptions opts) : base(opts)
-        { }
-
-        public DbSet<Recipe> Recipes { get; set; }
     }
-}
 
+    public DbSet<Recipe> Recipes { get; set; }
+}
