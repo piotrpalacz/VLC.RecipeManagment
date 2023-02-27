@@ -31,6 +31,7 @@
     <None Remove="Application\API\Controllers\" />
     <None Remove="Application\Data\UnitOfWork\" />
     <None Remove="Application\Entities\" />
+    <None Remove="Application\Models\Cookbook\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\" />
@@ -44,6 +45,7 @@
     <Folder Include="Application\API\Controllers\" />
     <Folder Include="Application\Data\UnitOfWork\" />
     <Folder Include="Application\Entities\" />
+    <Folder Include="Application\Models\Cookbook\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Application\Properties\launchSettings.json" />
