@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VLC.RecipeManagment.Infrastructure;
+using RecipeManager.Infrastructure;
 
 #nullable disable
 
 namespace VLC.RecipeManagment.Migrations
 {
-	[DbContext(typeof(ApiDbContext))]
+    [DbContext(typeof(ApiDbContext))]
 	[Migration("20230225232942_init")]
 	partial class init
 	{

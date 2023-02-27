@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VLC.RecipeManagment.Application.Data.Repository;
-using VLC.RecipeManagment.Application.Data.UnitOfWork;
-using VLC.RecipeManagment.Application.Models.Recipes;
-using VLC.RecipeManagment.Infrastructure;
+using RecipeManager.Application.Data.Repository;
+using RecipeManager.Application.Data.UnitOfWork;
+using RecipeManager.Application.Models.Recipes;
+using RecipeManager.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

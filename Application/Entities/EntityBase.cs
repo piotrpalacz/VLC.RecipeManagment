@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace VLC.RecipeManagment.Application.Entities
+namespace RecipeManager.Application.Entities
 {
     public abstract class EntityBase
     {

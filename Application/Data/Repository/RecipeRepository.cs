@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using VLC.RecipeManagment.Application.Models.Recipes;
-using VLC.RecipeManagment.Infrastructure;
+using RecipeManager.Application.Models.Recipes;
+using RecipeManager.Infrastructure;
 
-namespace VLC.RecipeManagment.Application.Data.Repository
+namespace RecipeManager.Application.Data.Repository
 {
     public class RecipeRepository : IRecipeRepository
     {

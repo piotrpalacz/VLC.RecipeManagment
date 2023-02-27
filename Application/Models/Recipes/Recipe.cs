@@ -1,7 +1,7 @@
-﻿using System;
-using VLC.RecipeManagment.Application.Entities;
+﻿using RecipeManager.Application.Entities;
+using System;
 
-namespace VLC.RecipeManagment.Application.Models.Recipes
+namespace RecipeManager.Application.Models.Recipes
 {
     public class Recipe : EntityBase
     {

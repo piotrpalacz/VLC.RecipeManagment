@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using VLC.RecipeManagment.Application.Models.Recipes;
+using RecipeManager.Application.Models.Recipes;
 
-namespace VLC.RecipeManagment.Infrastructure
+namespace RecipeManager.Infrastructure
 {
     public class ApiDbContext : DbContext
     {

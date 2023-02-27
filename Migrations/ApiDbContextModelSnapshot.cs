@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VLC.RecipeManagment.Infrastructure;
+using RecipeManager.Infrastructure;
 
 #nullable disable
 
 namespace VLC.RecipeManagment.Migrations
 {
-	[DbContext(typeof(ApiDbContext))]
+    [DbContext(typeof(ApiDbContext))]
 	partial class ApiDbContextModelSnapshot : ModelSnapshot
 	{
 		protected override void BuildModel(ModelBuilder modelBuilder)

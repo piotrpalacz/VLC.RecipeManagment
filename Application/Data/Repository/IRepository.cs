@@ -1,5 +1,6 @@
 ﻿using System;
-namespace VLC.RecipeManagment.Application.Data.Repository
+
+namespace RecipeManager.Application.Data.Repository
 {
     public interface IRepository<T> where T : class
     {
