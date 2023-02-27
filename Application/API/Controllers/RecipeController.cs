@@ -1,81 +1,71 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using VLC.RecipeManagment.Application.Data.UnitOfWork;
-using VLC.RecipeManagment.Application.Models.Recipes;
+﻿using Microsoft.AspNetCore.Mvc;
+using RecipeManager.Application.Data.UnitOfWork;
+using RecipeManager.Application.Models.Recipes;
 
-namespace VLC.RecipeManagment.Application.API.Controllers
+namespace RecipeManager.Application.API.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class RecipeController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class RecipeController : ControllerBase
+    private readonly IUnitOfWork _uow;
+
+    public RecipeController(IUnitOfWork uow)
     {
-        private readonly IUnitOfWork _uow;
+        _uow = uow;
+    }
 
-        public RecipeController(IUnitOfWork uow)
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Recipe>>> GetAllRecipesAsync()
+    {
+        var recipe = await _uow.RecipesRepo.GetAllAsync();
+        return Ok(recipe);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Recipe>> GetRecipeByIdAsync(int id)
+    {
+        var recipe = await _uow.RecipesRepo.GetRecordByIdAsync(id);
+        return Ok(recipe);
+    }
+
+    [HttpPost("add")]
+    public async Task<ActionResult<Recipe>> AddRecipeAsync(Recipe recipe)
+    {
+        await _uow.RecipesRepo.InsertRecordAsync(recipe);
+        return Ok(recipe);
+    }
+
+    [HttpPost("update")]
+    public void UpdateRecipeAsync(Recipe recipe)
+    {
+        _uow.RecipesRepo.UpdateRecordAsync(recipe);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteAsync(int id)
+    {
+        await _uow.RecipesRepo.DeleteRecordAsync(id);
+        return Ok(id);
+    }
+
+    [HttpGet("search")]
+    public async Task<ActionResult<IEnumerable<Recipe>>> Search(string label)
+    {
+        try
         {
-            _uow = uow;
-        }
+            var result = await _uow.Search(label);
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Recipe>>> GetAllRecipesAsync()
+            if (result.Any()) return Ok(result);
+
+            return NotFound();
+        }
+        catch (Exception e)
         {
-            var recipe = await _uow.RecipesRepo.GetAllAsync();
-            return Ok(recipe);
+            return StatusCode(
+                StatusCodes.Status500InternalServerError,
+                "Error retrieving data from the database"
+            );
         }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Recipe>> GetRecipeByIdAsync(int id)
-        {
-            var recipe = await _uow.RecipesRepo.GetRecordByIdAsync(id);
-            return Ok(recipe);
-        }
-
-        [HttpPost("add")]
-        public async Task<ActionResult<Recipe>> AddRecipeAsync(Recipe recipe)
-        {
-            await _uow.RecipesRepo.InsertRecordAsync(recipe);
-            return Ok(recipe);
-        }
-
-        [HttpPost("update")]
-        public void UpdateRecipeAsync(Recipe recipe)
-        {
-            _uow.RecipesRepo.UpdateRecordAsync(recipe);
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteAsync(int id)
-        {
-            await _uow.RecipesRepo.DeleteRecordAsync(id);
-            return Ok(id);
-        }
-
-        [HttpGet("search")]
-        public async Task<ActionResult<IEnumerable<Recipe>>> Search(string label)
-        {
-            try
-            {
-                var result = await _uow.Search(label);
-
-                if (result.Any())
-                {
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception e)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
-            }
-        }
-
-
-
-
-
-        
-
     }
 }
-
