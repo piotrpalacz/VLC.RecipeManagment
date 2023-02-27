@@ -49,7 +49,7 @@ namespace VLC.RecipeManagment.Application.Data.Repository
 
         }
 
-        
+
     }
 
 }

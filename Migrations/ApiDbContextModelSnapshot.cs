@@ -9,43 +9,43 @@ using VLC.RecipeManagment.Infrastructure;
 
 namespace VLC.RecipeManagment.Migrations
 {
-    [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
-    {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
+	[DbContext(typeof(ApiDbContext))]
+	partial class ApiDbContextModelSnapshot : ModelSnapshot
+	{
+		protected override void BuildModel(ModelBuilder modelBuilder)
+		{
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.3")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+			modelBuilder
+				.HasAnnotation("ProductVersion", "7.0.3")
+				.HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+			SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("VLC.RecipeManagment.Application.Models.Recipes.Recipe", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+			modelBuilder.Entity("VLC.RecipeManagment.Application.Models.Recipes.Recipe", b =>
+				{
+					b.Property<int>("Id")
+						.ValueGeneratedOnAdd()
+						.HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+					SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Calories")
-                        .HasColumnType("int");
+					b.Property<int>("Calories")
+						.HasColumnType("int");
 
-                    b.Property<string>("Ingredients")
-                        .HasColumnType("nvarchar(max)");
+					b.Property<string>("Ingredients")
+						.HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Instructions")
-                        .HasColumnType("nvarchar(max)");
+					b.Property<string>("Instructions")
+						.HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Label")
-                        .HasColumnType("nvarchar(max)");
+					b.Property<string>("Label")
+						.HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+					b.HasKey("Id");
 
-                    b.ToTable("Recipes");
-                });
+					b.ToTable("Recipes");
+				});
 #pragma warning restore 612, 618
-        }
-    }
+		}
+	}
 }

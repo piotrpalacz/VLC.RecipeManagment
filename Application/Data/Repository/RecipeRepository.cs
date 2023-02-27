@@ -51,7 +51,7 @@ namespace VLC.RecipeManagment.Application.Data.Repository
             await _context.SaveChangesAsync();
         }
 
-        
+
     }
 }
 

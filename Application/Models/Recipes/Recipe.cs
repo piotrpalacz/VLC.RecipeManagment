@@ -13,7 +13,7 @@ namespace VLC.RecipeManagment.Application.Models.Recipes
 
         public int Calories { get; set; }
 
-        
+
     }
 }
 
